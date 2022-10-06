@@ -38,6 +38,7 @@
  var correct=0
     var wrong=0
     var useImage = 1;
+    count=0;
 function checkGuess(){
    
 
@@ -47,17 +48,29 @@ function checkGuess(){
     
   
     if(form1===form1_N){
+        count=0;
         correct=correct+1
         alert("You got it right")
         document.getElementById("result").innerHTML="correct="+correct;
        
     } else {
+        count=count+1;
         wrong=wrong+1
         alert("Wrong Musician")
-        document.getElementById("result").innerHTML="wrong="+wrong;
-        
+      
         
     }
+    if(count>=3){
+        if(wrong>=3){
+            addAlert();
+        }
+    }
+
+    function addAlert(){
+        alert("Sorry, game over.");
+    }
+
+    document.getElementById("result").innerHTML="wrong="+wrong;
 }
 function swapImage(){
     switch(useImage){
