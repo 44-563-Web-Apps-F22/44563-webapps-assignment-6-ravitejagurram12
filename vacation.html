@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>vacations</title>
+     </head>
+<body>
+<h2>Raviteja Gurram selects a vacation</h2>
+<form>
+    <input type="checkbox" id="travel_by_air" name="travel_by_air" value="true">
+        <label>Travel by Air</label></br>
+    <input type="checkbox" id="domestic" name="domestic" value="true" >
+        <label>Domestic</label></br>
+    <input type="checkbox" id="resort" name="resort" value="false">
+      <label>Resort</label></br>
+      <input type="button" onclick="selectVacation()" value="Select a vacation">
+</form>
+
+<div id="result">This text will be replaced </div>
+
+<br>
+
+<form>
+    <label for="Enter_city">Enter a city </label>
+    <input type ="text" id="city" name="Enter_city" value=city> <br>
+
+    <label for="Enter_price">Enter price </label>
+    <input type ="text" id="price" name="Enter_price"> <br>
+
+    <input type="button" onclick="updateVacation()" value="Update the vacation">
+</form>
+
+
+
+
+<script> 
+let my_vacation={}
+
+function selectVacation(){
+    my_vacation={}
+    if(document.getElementById("travel_by_air").checked==true){
+        my_vacation['travel_by_air']=true
+    }
+    else{
+        my_vacation['travel_by_air']=false
+    }
+    if(document.getElementById("domestic").checked==true){
+        my_vacation['domestic']=true
+    }
+    else{
+        my_vacation['domestic']=false
+    }
+    if(document.getElementById("resort").checked==true){
+        my_vacation['resort']=true
+    }
+    else{
+        my_vacation['resort']=false
+    }
+     document.getElementById("result").innerHTML=JSON.stringify(my_vacation)
+     
+   
+}
+
+function updateVacation(){
+
+    city=document.getElementById("city").value
+    price=document.getElementById("price").value
+    my_vacation['city']=city
+    my_vacation['price']=price
+    document.getElementById("result").innerHTML=JSON.stringify(my_vacation)
+
+}
+
+
+</script>
+
+</body>
+</html>
